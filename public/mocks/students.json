@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Juan",
+        "surname": "Pérez",
+        "age": 20,
+        "dni": 12345678,
+        "average": 8.5
+    },
+    {
+        "name": "Ana",
+        "surname": "Gómez",
+        "age": 22,
+        "dni": 87654321,
+        "average": 9.0
+    },
+    {
+        "name": "Luis",
+        "surname": "Martínez",
+        "age": 19,
+        "dni": 11223344,
+        "average": 7.8
+    },
+    {
+        "name": "María",
+        "surname": "López",
+        "age": 21,
+        "dni": 44332211,
+        "average": 8.9
+    },
+    {
+        "name": "Carlos",
+        "surname": "Hernández",
+        "age": 23,
+        "dni": 55667788,
+        "average": 9.2
+    },
+    {
+        "name": "Laura",
+        "surname": "Ramírez",
+        "age": 20,
+        "dni": 99887766,
+        "average": 8.0
+    },
+    {
+        "name": "Pedro",
+        "surname": "Sánchez",
+        "age": 24,
+        "dni": 33445566,
+        "average": 7.5
+    },
+    {
+        "name": "Lucía",
+        "surname": "Torres",
+        "age": 22,
+        "dni": 66778899,
+        "average": 9.1
+    },
+    {
+        "name": "Javier",
+        "surname": "García",
+        "age": 19,
+        "dni": 12344321,
+        "average": 8.3
+    },
+    {
+        "name": "Sofía",
+        "surname": "Fernández",
+        "age": 21,
+        "dni": 43211234,
+        "average": 9.4
+    }
+]
