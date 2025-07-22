@@ -1,7 +1,11 @@
 <div class="container">
   <app-toolbar class="toolbar"></app-toolbar>
   <app-navbar class="navbar"></app-navbar>
+  
   <div class="content">
     <app-student-table [students]="students"></app-student-table>
   </div>
+
+  <app-add-form (studentAdded)="addStudent($event)"></app-add-form>
+
 </div>
