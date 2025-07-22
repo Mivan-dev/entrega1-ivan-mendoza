@@ -24,11 +24,47 @@ export class AddForm implements OnInit {
   
   ngOnInit() {
     this.studentForm = this.fb.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      dni: ['', Validators.required],
-      age: ['', [Validators.required, Validators.min(0)]],
-      average: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
+
+      name: ['', 
+        [
+          // minimo 2 y solo letras y espacios
+          Validators.required, Validators.minLength(2), 
+          Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$')
+        ]
+      ],
+
+      surname: ['', 
+        [
+          // minimo 2 y solo letras y espacios
+          Validators.required, Validators.minLength(2), 
+          Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$')
+        ]
+      ],
+
+      dni: ['', 
+            [
+              // solo numeros de 7 u 8 digitos. Ej: 5.000.000 o 05.000.000 (obviamente sin puntos)
+              Validators.required,
+              Validators.pattern('^[0-9]{7,8}$')
+            ]
+          ],
+
+      age: ['', 
+        [
+          // solo numeros
+          Validators.required, Validators.min(0),
+          Validators.pattern('^[0-9]+$')
+        ]
+      ],
+
+      average: ['', 
+        [
+          // solo numeros entre 0 y 10 y decimales
+          Validators.required, 
+          Validators.min(0), 
+          Validators.max(10), 
+          Validators.pattern('^[0-9]+(\\.[0-9]+)?$')
+        ]],
     });
   }
 

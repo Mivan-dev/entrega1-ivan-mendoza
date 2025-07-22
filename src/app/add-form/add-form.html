@@ -12,7 +12,7 @@
         formControlName="name" 
         placeholder="Ingrese nombre">
         <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched" class="error">
-            Nombre es requerido.
+            Nombre es requerido, mínimo 2 caracteres. Solo letras.
         </div>
     </div>
         
@@ -25,7 +25,7 @@
         formControlName="surname" 
         placeholder="Ingrese apellido">
         <div *ngIf="studentForm.get('surname')?.invalid && studentForm.get('surname')?.touched" class="error">
-            Apellido es requerido.
+            Apellido es requerido, mínimo 2 caracteres. Solo letras.
         </div>
     </div>
         
@@ -38,7 +38,7 @@
         formControlName="dni" 
         placeholder="Ingrese DNI" >
         <div *ngIf="studentForm.get('dni')?.invalid && studentForm.get('dni')?.touched" class="error">
-        DNI es requerido.
+        DNI es requerido, ingrese un DNI válido sin ".".
         </div>
     </div>
     
@@ -50,7 +50,7 @@
         formControlName="age" 
         placeholder="Ingrese edad">
         <div *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched" class="error">
-        Edad es requerida y debe ser mayor a 0.
+        Edad es requerida y debe ser mayor a 0. Solo números.
         </div>
     </div>
 
@@ -64,7 +64,7 @@
         formControlName="average" 
         placeholder="Ingrese promedio">
         <div *ngIf="studentForm.get('average')?.invalid && studentForm.get('average')?.touched" class="error">
-        El promedio es requerido y debe ser entre 0 y 10.
+        El promedio es requerido y debe ser entre 0 y 10. Solo números.
         </div>
     </div>
     
