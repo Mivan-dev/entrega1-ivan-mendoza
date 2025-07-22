@@ -29,6 +29,7 @@ export class AddForm implements OnInit {
 
   onSubmit() {
     this.studentAdded.emit(this.studentForm.value);
+    this.studentForm.reset();
   } 
 
   onReset() {

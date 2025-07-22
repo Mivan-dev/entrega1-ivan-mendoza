@@ -7,10 +7,11 @@ import { HttpClient } from '@angular/common/http';
 import { Student } from '../shared/entities';
 import { StudentTable } from "./student-table/student-table";
 import { AddForm } from "./add-form/add-form";
+import { DeleteForm } from './delete-form/delete-form';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, Toolbar, Navbar, StudentTable, AddForm],
+  imports: [RouterOutlet, CommonModule, Toolbar, Navbar, StudentTable, AddForm, DeleteForm],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -31,5 +32,10 @@ export class App implements OnInit {
     console.log('Nuevo estudiante agregado:', student);
     this.students = [...this.students, student];
     // Aquí podrías hacer una llamada a la API para guardar el nuevo estudiante.
+  }
+
+  deleteStudent(dni: string) {
+    const studentList = this.students.filter(student => student.dni.toString() !== dni);
+    this.students = [...studentList];
   }
 }
