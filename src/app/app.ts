@@ -17,6 +17,7 @@ import { AddForm } from "./add-form/add-form";
 export class App implements OnInit {
   
   students: Student[] = [];
+  activeSection = "students";
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
