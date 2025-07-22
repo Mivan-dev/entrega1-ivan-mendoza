@@ -1,24 +1,16 @@
 <!-- Barra de Navegación-->
 
-<!-- <div class="navbar">
+<div>
   <h2 appBoldtitle>Acciones</h2>
-  <ul>
-    <li (click)="navigate('students')">Ver lista de estudiantes</li>
-    <li (click)="navigate('add')">Agregar</li>
-    <li>Eliminar</li>
-    <li>Editar</li>
+  <ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li ngbNavItem>
+      <button class="btn btn-dark" (click)="navigate('students')">Ver lista de estudiantes</button>
+    </li>
+    <li ngbNavItem>
+      <button class="btn btn-success"  (click)="navigate('add')">Agregar</button>
+    </li>
+    <li ngbNavItem>
+      <button class="btn btn-warning"  (click)="navigate('delete')">Eliminar</button>
+    </li>
   </ul>
-</div> -->
-
-
-<ul ngbNav #nav="ngbNav" class="nav-tabs">
-  <li ngbNavItem>
-    <button class="btn btn-dark" (click)="navigate('students')">Ver lista de estudiantes</button>
-  </li>
-  <li ngbNavItem>
-    <button class="btn btn-success"  (click)="navigate('add')">Agregar</button>
-  </li>
-  <li ngbNavItem>
-    <button class="btn btn-warning"  (click)="navigate('delete')">Eliminar</button>
-  </li>
-</ul>
+</div>
