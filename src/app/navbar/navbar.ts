@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Boldtitle } from '../../shared/directives/boldtitle';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [Boldtitle, NgbModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })

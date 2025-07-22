@@ -1,5 +1,5 @@
 <div class="add-form">
-  <h2>Añadir Estudiante</h2>
+  <h2 appBoldtitle>Añadir Estudiante</h2>
   
   <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
     
@@ -71,7 +71,7 @@
     <button 
         type="submit" 
         [disabled]="studentForm.invalid"
-        class="submit-btn">
+        class="submit-btn btn btn-success">
         Añadir Estudiante
     </button>
         
@@ -80,7 +80,7 @@
    <button 
       type="button" 
       (click)="onReset()"
-      class="reset-btn">
+      class="reset-btn btn btn-primary">
       Limpiar Formulario
     </button>  
   </form>
