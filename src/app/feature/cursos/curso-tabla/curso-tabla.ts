@@ -18,7 +18,7 @@ export class CursoTabla {
   constructor (private router: Router) { }
 
   viewDetails(course: Course) {
-    this.router.navigate(['/ver-alumno'],{
+    this.router.navigate(['/ver-curso'],{
       state: { course }
   });
   }
@@ -28,7 +28,7 @@ export class CursoTabla {
   }
 
   editCourse(course: Course) {
-    this.router.navigate(['/editar-alumno', course.id],{
+    this.router.navigate(['/editar-curso', course.id],{
       state: { course }
   });
   }

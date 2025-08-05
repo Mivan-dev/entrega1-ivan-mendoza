@@ -11,6 +11,6 @@ export interface Student {
 export interface Course {
     id: number;
     name: string;
-    descripcion: string;
-    duracion: string;
+    description: string;
+    duration: string;
 }
