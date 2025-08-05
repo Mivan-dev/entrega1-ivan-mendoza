@@ -1,1 +1,31 @@
-<p>editar-curso works!</p>
+<div *ngIf="courseForm">
+  <h2>Editar Curso</h2>
+  <form [formGroup]="courseForm" (ngSubmit)="editarCurso()">
+
+    <label>
+      Nombre:
+      <input formControlName="name" />
+    </label>
+    <div *ngIf="courseForm.get('name')?.invalid && courseForm.get('name')?.touched">
+      Nombre es requerido.
+    </div>
+
+    <label>
+      Descripción:
+      <input formControlName="description" />
+    </label>
+    <div *ngIf="courseForm.get('description')?.invalid && courseForm.get('description')?.touched">
+      Edad debe ser mayor a 0.
+    </div>
+
+    <label>
+      Duración:
+      <input formControlName="duration" />
+    </label>
+    <div *ngIf="courseForm.get('duration')?.invalid && courseForm.get('duration')?.touched">
+      DNI es requerido.
+    </div>
+
+    <button type="submit" [disabled]="courseForm.invalid">Guardar</button>
+  </form>
+</div>
