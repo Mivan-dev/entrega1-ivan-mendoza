@@ -22,14 +22,7 @@ export class Cursos {
     }
   
     deleteCourse(course: Course) {
-      this.cursosApi.deleteCurso(course).subscribe(()=> {
-        this.cursosApi.getCursos().subscribe(cursos => {
-          this.cursos = cursos;
-        })
-      });
-  
       this.cursosApi.deleteCurso(course).pipe(
-        // Despues que termina el delete, vuelve a obtener los alumnos
         switchMap(() => this.cursosApi.getCursos())
       ).subscribe(cursos => {
         this.cursos = cursos;

@@ -22,14 +22,9 @@ export class Alumnos {
   }
 
   deleteStudent(student: Student) {
-    this.alumnosApi.deleteAlumno(student).subscribe(()=> {
-      this.alumnosApi.getAlumnos().subscribe(alumnos => {
-        this.alumnos = alumnos;
-      })
-    });
-
     this.alumnosApi.deleteAlumno(student).pipe(
       // Despues que termina el delete, vuelve a obtener los alumnos
+      // Ver que id conincida con el dni sino dara error
       switchMap(() => this.alumnosApi.getAlumnos())
     ).subscribe(alumnos => {
       this.alumnos = alumnos;
