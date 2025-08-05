@@ -24,6 +24,7 @@ export class EditarAlumno implements OnInit {
 ) {}
 
   ngOnInit(): void {
+    // Uso snapshot porque es mas rapido y no espero que cambie el dni en la misma instancia del componente
   const dni = this.route.snapshot.paramMap.get('dni');
 
   if (!dni) {

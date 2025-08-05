@@ -23,6 +23,7 @@ export class EditarCurso implements OnInit {
 ) {}
 
   ngOnInit(): void {
+    // Uso snapshot porque es mas rapido y no espero que cambie el id en la misma instancia del componente
   const id = this.route.snapshot.paramMap.get('id');
 
   if (!id) {
