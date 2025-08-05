@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Student } from '../../shared/entities';
 import { MatTableModule } from '@angular/material/table';
 import { FullnamePipe } from '../../shared/pipes/fullname-pipe';
@@ -13,6 +13,7 @@ import { Router, RouterModule } from '@angular/router';
 export class StudentTable {
   
   @Input() students: Student[] = [];
+  @Output() deleteEvent = new EventEmitter<Student>();
 
   displayedColumns: string[] = ['fullname', 'age', 'dni', 'average', 'actions'];
 
@@ -23,4 +24,9 @@ export class StudentTable {
       state: { student }
   });
   }
+
+  deleteStudent(student: Student) {
+    this.deleteEvent.emit(student);
+  }
+
 }
