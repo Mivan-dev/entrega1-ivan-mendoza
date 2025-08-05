@@ -37,10 +37,25 @@ export class EditarCurso implements OnInit {
       this.originalCourse = course;
 
       this.courseForm = this.fb.group({
-        name: [course.name, Validators.required],
-        description: [course.description, Validators.required],
-        duration: [course.duration, [Validators.required, Validators.min(1)]],
-        Id: [course.id, Validators.required],
+        name: [course.name,
+          [
+            // minimo 2 y solo letras y espacios
+            Validators.required, Validators.minLength(2), 
+            Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$')
+          ]
+        ],
+        description: [course.description,
+          [
+            Validators.required,
+            Validators.minLength(10)
+          ]
+        ],
+        duration: [course.duration,
+          [
+            Validators.required,
+            Validators.minLength(4)
+          ]
+        ],
       });
     },
     error: (err) => {

@@ -7,7 +7,7 @@
       <input formControlName="name" />
     </label>
     <div *ngIf="courseForm.get('name')?.invalid && courseForm.get('name')?.touched">
-      Nombre es requerido.
+      Nombre es requerido, mínimo 2 caracteres. Solo letras.
     </div>
 
     <label>
@@ -15,7 +15,7 @@
       <input formControlName="description" />
     </label>
     <div *ngIf="courseForm.get('description')?.invalid && courseForm.get('description')?.touched">
-      Edad debe ser mayor a 0.
+      La descripción es requerida, mínimo 10 caracteres.
     </div>
 
     <label>
@@ -23,7 +23,7 @@
       <input formControlName="duration" />
     </label>
     <div *ngIf="courseForm.get('duration')?.invalid && courseForm.get('duration')?.touched">
-      DNI es requerido.
+      La duración es requerida, mínimo 4 carácter.
     </div>
 
     <button type="submit" [disabled]="courseForm.invalid">Guardar</button>
