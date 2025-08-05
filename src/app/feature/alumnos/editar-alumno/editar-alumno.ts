@@ -11,24 +11,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './editar-alumno.html',
   styleUrl: './editar-alumno.scss'
 })
-// export class EditarAlumno {
-//   student: Student | undefined;
-
-//   constructor(private router: Router) {
-//     const navigation = this.router.getCurrentNavigation();
-//     this.student = navigation?.extras.state?.['student'];
-//   } 
-
-//    editStudent() {
-//     if (this.student) {
-//       this.router.navigate(['/editar-alumno'], {
-//         state: { student: this.student }
-//       });
-//     } else {
-//       console.error('No student data available');
-//     }
-//   }
-// }
 
 export class EditarAlumno implements OnInit {
   studentForm!: FormGroup;
