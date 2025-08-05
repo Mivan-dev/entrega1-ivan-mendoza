@@ -26,6 +26,10 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/cursos/cursos').then(m => m.Cursos)
     },
     {
+        path: RoutesPaths.EDITAR_CURSO + '/:id',
+        loadComponent: () => import('./feature/cursos/editar-curso/editar-curso').then(m => m.EditarCurso)
+    },
+    {
         path: RoutesPaths.INSCRIPCIONES,
         loadComponent: () => import('./feature/inscripciones/inscripciones').then(m => m.Inscripciones)
     },
