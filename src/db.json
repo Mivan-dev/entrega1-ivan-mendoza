@@ -4,17 +4,17 @@
       "id": "12345678",
       "name": "Ivan",
       "surname": "Mendoza",
-      "age": 20,
-      "dni": 12345678,
+      "age": 32,
+      "dni": "12345678",
       "average": 8.5
     },
     {
       "id": "87654321",
       "name": "Pepita",
       "surname": "La Pistolera",
-      "age": 22,
+      "age": 58,
       "dni": 87654321,
-      "average": 9
+      "average": "9"
     },
     {
       "id": "11223344",
@@ -52,9 +52,9 @@
   "courses": [
     {
       "id": "1",
-      "name": "ReactJS",
+      "name": "React JS",
       "description": "Curso de ReactJS inicial",
-      "duration": "3 meses"
+      "duration": "2 meses"
     },
     {
       "id": "2",
