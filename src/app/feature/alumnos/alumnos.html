@@ -1,5 +1,5 @@
-<p>alumnos works!</p>
 
+<h2>Listado de Alumnos</h2>
 
 <div *ngIf="alumnos; else loading">
     <app-student-table (deleteEvent)="deleteStudent($event)" [students]="alumnos"></app-student-table>
