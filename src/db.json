@@ -73,6 +73,12 @@
       "name": "Python",
       "description": "Curso de Python para principiantes",
       "duration": "1 meses"
+    },
+    {
+      "id": "5",
+      "name": "Java",
+      "description": "Curso de Java orientado a objetos",
+      "duration": "5 meses"
     }
   ],
   "inscriptions": []
