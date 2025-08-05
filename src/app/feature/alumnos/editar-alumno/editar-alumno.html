@@ -1,0 +1,47 @@
+
+<div *ngIf="studentForm">
+  <h2>Editar Alumno</h2>
+  <form [formGroup]="studentForm" (ngSubmit)="editarAlumno()">
+    <label>
+      Nombre:
+      <input formControlName="name" />
+    </label>
+    <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched">
+      Nombre es requerido.
+    </div>
+
+    <label>
+      Apellido:
+      <input formControlName="surname" />
+    </label>
+    <div *ngIf="studentForm.get('surname')?.invalid && studentForm.get('surname')?.touched">
+      Apellido es requerido.
+    </div>
+
+    <label>
+      Edad:
+      <input type="number" formControlName="age" />
+    </label>
+    <div *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched">
+      Edad debe ser mayor a 0.
+    </div>
+
+    <label>
+      DNI:
+      <input formControlName="dni" />
+    </label>
+    <div *ngIf="studentForm.get('dni')?.invalid && studentForm.get('dni')?.touched">
+      DNI es requerido.
+    </div>
+
+    <label>
+      Promedio:
+      <input formControlName="average" />
+    </label>
+    <div *ngIf="studentForm.get('average')?.invalid && studentForm.get('average')?.touched">
+      Promedio es requerido.
+    </div>
+
+    <button type="submit" [disabled]="studentForm.invalid">Guardar</button>
+  </form>
+</div>
