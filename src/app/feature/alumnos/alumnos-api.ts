@@ -14,11 +14,19 @@ export class AlumnosAPI {
   ) { }
 
   getAlumnos(): Observable<Student[]> {
-    return this.http.get<Student[]>(`${this.baseUrl}/students`).pipe(delay(1000));
+    return this.http.get<Student[]>(`${this.baseUrl}/students`).pipe(delay(500));
+  }
+
+  getAlumnoPorDni(dni: string): Observable<Student> {
+  return this.http.get<Student>(`${this.baseUrl}/students/${dni}`).pipe(delay(500));
   }
 
   deleteAlumno(student: Student): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/students/${student.dni}`).pipe(delay(1000));
+    return this.http.delete<void>(`${this.baseUrl}/students/${student.dni}`).pipe(delay(500));
+  }
+
+  updateAlumno(student: Student): Observable<Student> {
+  return this.http.put<Student>(`${this.baseUrl}/students/${student.dni}`, student).pipe(delay(500));
   }
 
 }
