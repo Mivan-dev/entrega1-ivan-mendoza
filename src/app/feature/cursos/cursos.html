@@ -1,1 +1,9 @@
-<p>cursos works!</p>
+<h2>Listado de Cursos</h2>
+
+<div *ngIf="cursos; else loading">
+    <app-curso-tabla (deleteEvent)="deleteCourse($event)" [courses]="cursos"></app-curso-tabla>
+</div>
+
+<ng-template #loading>
+    <p>Cargando...</p>
+</ng-template>
