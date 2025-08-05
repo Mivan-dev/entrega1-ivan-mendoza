@@ -14,6 +14,10 @@ export const routes: Routes = [
         component: Alumnos
     },
     {
+        path: RoutesPaths.VER_ALUMNO,
+        loadComponent: () => import('./feature/alumnos/ver-alumno/ver-alumno').then(m => m.VerAlumno)
+    },
+    {
         path: RoutesPaths.CURSOS,
         loadComponent: () => import('./feature/cursos/cursos').then(m => m.Cursos)
     },
