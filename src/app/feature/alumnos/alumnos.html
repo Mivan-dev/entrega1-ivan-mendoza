@@ -2,7 +2,7 @@
 
 
 <div *ngIf="alumnos; else loading">
-    <app-student-table [students]="alumnos"></app-student-table>
+    <app-student-table (deleteEvent)="deleteStudent($event)" [students]="alumnos"></app-student-table>
 </div>
 
 <ng-template #loading>

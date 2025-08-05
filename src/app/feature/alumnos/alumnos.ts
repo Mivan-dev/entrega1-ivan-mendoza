@@ -3,6 +3,7 @@ import { Student } from '../../../shared/entities';
 import { AlumnosAPI } from './alumnos-api';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { StudentTable } from "../../student-table/student-table";
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-alumnos',
@@ -20,4 +21,19 @@ export class Alumnos {
     });
   }
 
+  deleteStudent(student: Student) {
+    this.alumnosApi.deleteAlumno(student).subscribe(()=> {
+      this.alumnosApi.getAlumnos().subscribe(alumnos => {
+        this.alumnos = alumnos;
+      })
+    });
+
+    this.alumnosApi.deleteAlumno(student).pipe(
+      // Despues que termina el delete, vuelve a obtener los alumnos
+      switchMap(() => this.alumnosApi.getAlumnos())
+    ).subscribe(alumnos => {
+      this.alumnos = alumnos;
+    } );
+
+  }
 }
