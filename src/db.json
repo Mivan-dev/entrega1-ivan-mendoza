@@ -1,8 +1,7 @@
 {
-    "students":
-
-[
+  "students": [
     {
+        "id": 12345678,
         "name": "Juan",
         "surname": "Pérez",
         "age": 20,
@@ -10,6 +9,7 @@
         "average": 8.5
     },
     {
+        "id": 87654321,
         "name": "Ana",
         "surname": "Gómez",
         "age": 22,
@@ -17,6 +17,7 @@
         "average": 9.0
     },
     {
+        "id": 11223344,
         "name": "Luis",
         "surname": "Martínez",
         "age": 19,
@@ -24,6 +25,7 @@
         "average": 7.8
     },
     {
+        "id": 44332211,
         "name": "María",
         "surname": "López",
         "age": 21,
@@ -31,6 +33,7 @@
         "average": 8.9
     },
     {
+        "id": 55667788,
         "name": "Carlos",
         "surname": "Hernández",
         "age": 23,
@@ -38,12 +41,14 @@
         "average": 9.2
     },
     {
+        "id": 1239988776645678,
         "name": "Laura",
         "surname": "Ramírez",
         "age": 20,
         "dni": 99887766,
         "average": 8.0
     }
-]
-
+  ],
+  "courses": [],
+  "inscriptions": []
 }
