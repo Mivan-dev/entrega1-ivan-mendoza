@@ -1,1 +1,15 @@
-<p>ver-curso works!</p>
+<h4>Curso:</h4>
+
+<div class="detail" *ngIf="course">
+  <div class="detail-content">
+    <h2>{{ course?.name }}</h2>
+    <br>
+    <p><strong>Descripción:</strong> {{ course?.description }}</p>
+    <p><strong>Duración:</strong> {{ course?.duration }}</p>
+  </div>
+</div>
+
+<!-- If student is not defined, show a message -->
+<div class="detail" *ngIf="!course">
+  <p>No se encontró información del Curso.</p>
+</div>
