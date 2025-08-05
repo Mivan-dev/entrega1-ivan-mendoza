@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Student } from '../../../../shared/entities';
 import { Router } from '@angular/router';
-import { JsonPipe } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-ver-alumno',
-  imports: [JsonPipe],
+  imports: [JsonPipe, CommonModule],
   templateUrl: './ver-alumno.html',
   styleUrl: './ver-alumno.scss'
 })

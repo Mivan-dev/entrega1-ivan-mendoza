@@ -1,3 +1,17 @@
-<p>ver-alumno works!</p>
+<h4>Alumno:</h4>
 
-{{student | json}}
+<div class="detail" *ngIf="student">
+  <div class="detail-content">
+    <h2>{{ student?.name }} {{ student?.surname }}</h2>
+    <br>
+    <p><strong>Edad:</strong> {{ student?.age }}</p>
+    <p><strong>DNI:</strong> {{ student?.dni }}</p>
+    <p><strong>Promedio:</strong> {{ student?.average }}</p>
+  </div>
+</div>
+
+<!-- If student is not defined, show a message -->
+<div class="detail" *ngIf="!student">
+  <p>No se encontró información del alumno.</p>
+</div>
+
