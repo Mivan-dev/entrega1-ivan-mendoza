@@ -38,12 +38,47 @@ export class EditarAlumno implements OnInit {
       this.originalStudent = student;
 
       this.studentForm = this.fb.group({
-        name: [student.name, Validators.required],
-        surname: [student.surname, Validators.required],
-        age: [student.age, [Validators.required, Validators.min(1)]],
-        dni: [student.dni, Validators.required],
-        average: [student.average, Validators.required]
-      });
+        name: [student.name, 
+        [
+          // minimo 2 y solo letras y espacios
+          Validators.required, Validators.minLength(2), 
+          Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$')
+        ]
+      ],
+
+      surname: [student.surname, 
+        [
+          // minimo 2 y solo letras y espacios
+          Validators.required, Validators.minLength(2), 
+          Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$')
+        ]
+      ],
+
+      dni: [student.dni, 
+            [
+              // solo numeros de 7 u 8 digitos. Ej: 5.000.000 o 05.000.000 (obviamente sin puntos)
+              Validators.required,
+              Validators.pattern('^[0-9]{7,8}$')
+            ]
+          ],
+
+      age: [student.age, 
+        [
+          // solo numeros
+          Validators.required, Validators.min(0),
+          Validators.pattern('^[0-9]+$')
+        ]
+      ],
+
+      average: [student.average, 
+        [
+          // solo numeros entre 0 y 10 y decimales
+          Validators.required, 
+          Validators.min(0), 
+          Validators.max(10), 
+          Validators.pattern('^[0-9]+(\\.[0-9]+)?$')
+        ]],
+    });
     },
     error: (err) => {
       console.error('Error al cargar alumno:', err);

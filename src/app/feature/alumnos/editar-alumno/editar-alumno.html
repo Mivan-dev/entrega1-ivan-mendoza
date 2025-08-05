@@ -7,7 +7,7 @@
       <input formControlName="name" />
     </label>
     <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched">
-      Nombre es requerido.
+      Nombre es requerido, mínimo 2 caracteres. Solo letras.
     </div>
 
     <label>
@@ -15,7 +15,7 @@
       <input formControlName="surname" />
     </label>
     <div *ngIf="studentForm.get('surname')?.invalid && studentForm.get('surname')?.touched">
-      Apellido es requerido.
+      Apellido es requerido, mínimo 2 caracteres. Solo letras.
     </div>
 
     <label>
@@ -23,7 +23,7 @@
       <input type="number" formControlName="age" />
     </label>
     <div *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched">
-      Edad debe ser mayor a 0.
+      Edad es requerida y debe ser mayor a 0. Solo números.
     </div>
 
     <label>
@@ -31,7 +31,7 @@
       <input formControlName="dni" />
     </label>
     <div *ngIf="studentForm.get('dni')?.invalid && studentForm.get('dni')?.touched">
-      DNI es requerido.
+      DNI es requerido, ingrese un DNI válido sin ".".
     </div>
 
     <label>
@@ -39,7 +39,7 @@
       <input formControlName="average" />
     </label>
     <div *ngIf="studentForm.get('average')?.invalid && studentForm.get('average')?.touched">
-      Promedio es requerido.
+      El promedio es requerido y debe ser entre 0 y 10. Solo números.
     </div>
 
     <button type="submit" [disabled]="studentForm.invalid">Guardar</button>
