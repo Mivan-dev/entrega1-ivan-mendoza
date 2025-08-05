@@ -29,4 +29,9 @@ export class StudentTable {
     this.deleteEvent.emit(student);
   }
 
+  editStudent(student: Student) {
+    this.router.navigate(['/editar-alumno', student.dni],{
+      state: { student }
+  });
+  }
 }
