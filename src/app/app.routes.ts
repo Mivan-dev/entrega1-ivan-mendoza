@@ -18,6 +18,10 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/alumnos/ver-alumno/ver-alumno').then(m => m.VerAlumno)
     },
     {
+        path: RoutesPaths.EDITAR_ALUMNO + '/:dni',
+        loadComponent: () => import('./feature/alumnos/editar-alumno/editar-alumno').then(m => m.EditarAlumno)
+    },
+    {
         path: RoutesPaths.CURSOS,
         loadComponent: () => import('./feature/cursos/cursos').then(m => m.Cursos)
     },
