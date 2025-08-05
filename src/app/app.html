@@ -1,25 +1,9 @@
 <div class="container">
   <app-toolbar class="toolbar"></app-toolbar>
-  <app-navbar (activeSection)="activeSection = $event" class="navbar"></app-navbar>
+  <app-navbar class="navbar"></app-navbar>
   <div class="content">
   
-    <ng-container *ngIf="activeSection === 'students'">
-
-    <app-student-table [students]="students"></app-student-table>
-
-    </ng-container>
-
-    <ng-container *ngIf="activeSection === 'add'">
-
-      <app-add-form (studentAdded)="addStudent($event)"></app-add-form>
-
-    </ng-container>
-
-    <ng-container *ngIf="activeSection === 'delete'">
-
-      <app-delete-form (studentDeleted)="deleteStudent($event)"></app-delete-form>
-
-    </ng-container>
+    <router-outlet> </router-outlet>
 
   </div>
   

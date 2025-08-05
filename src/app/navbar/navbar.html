@@ -2,15 +2,15 @@
 
 <div>
   <h2 appBoldtitle>Acciones</h2>
-  <ul ngbNav #nav="ngbNav" class="nav-tabs">
-    <li ngbNavItem>
-      <button class="btn btn-dark" (click)="navigate('students')">Ver lista de estudiantes</button>
+  <ul class="nav flex-column">
+    <li routerLink="alumnos">
+      <button class="btn btn-dark">Alumnos</button>
     </li>
-    <li ngbNavItem>
-      <button class="btn btn-success"  (click)="navigate('add')">Agregar</button>
+    <li routerLink="cursos">
+      <button class="btn btn-success">Cursos</button>
     </li>
-    <li ngbNavItem>
-      <button class="btn btn-warning"  (click)="navigate('delete')">Eliminar</button>
+    <li routerLink="inscripciones">
+      <button class="btn btn-warning">Inscripciones</button>
     </li>
   </ul>
 </div>
