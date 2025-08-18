@@ -25,15 +25,15 @@ export class EditarAlumno implements OnInit {
 
   ngOnInit(): void {
     // Uso snapshot porque es mas rapido y no espero que cambie el dni en la misma instancia del componente
-  const dni = this.route.snapshot.paramMap.get('dni');
+  const id = this.route.snapshot.paramMap.get('id');
 
-  if (!dni) {
-    console.error('No se encontró el dni en la URL');
+  if (!id) {
+    console.error('No se encontró el id en la URL');
     this.router.navigate(['/alumnos']);
     return;
   }
 
-  this.alumnosAPI.getAlumnoPorDni(dni).subscribe({
+  this.alumnosAPI.getAlumnoPorId(id).subscribe({
     next: (student) => {
       this.originalStudent = student;
 

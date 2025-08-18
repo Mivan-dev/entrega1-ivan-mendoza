@@ -32,7 +32,7 @@ export class StudentTable {
   }
 
   editStudent(student: Student) {
-    this.router.navigate(['/editar-alumno', student.dni],{
+    this.router.navigate(['/editar-alumno', student.id],{
       state: { student }
   });
   }
