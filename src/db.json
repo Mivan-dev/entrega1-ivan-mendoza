@@ -1,22 +1,6 @@
 {
   "students": [
     {
-      "id": "12345678",
-      "name": "Ivan",
-      "surname": "Mendoza",
-      "age": 32,
-      "dni": "12345678",
-      "average": 8.5
-    },
-    {
-      "id": "87654321",
-      "name": "Pepita",
-      "surname": "La Pistolera",
-      "age": 58,
-      "dni": 87654321,
-      "average": "9"
-    },
-    {
       "id": "11223344",
       "name": "Luis",
       "surname": "Martínez",
