@@ -3,10 +3,12 @@ import { Student } from '../../shared/entities';
 import { MatTableModule } from '@angular/material/table';
 import { FullnamePipe } from '../../shared/pipes/fullname-pipe';
 import { Router, RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-student-table',
-  imports: [MatTableModule, FullnamePipe, RouterModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, FullnamePipe, RouterModule],
   templateUrl: './student-table.html',
   styleUrl: './student-table.scss'
 })

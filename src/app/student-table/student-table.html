@@ -30,9 +30,23 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> Acciones </th>
     <td mat-cell *matCellDef="let element">
-      <button (click)="viewDetails(element)" mat-button color="accent">Ver</button>
-      <button (click)="editStudent(element)" mat-button color="prymari">Editar</button>
-      <button (click)="deleteStudent(element)" mat-button color="accent">Eliminar</button>
+      <div class="cont-button">
+        <div class="button-group">
+          <button (click)="viewDetails(element)" matFab>
+          <mat-icon>more</mat-icon>
+          </button>
+        </div>
+        <div class="button-group">
+          <button (click)="editStudent(element)" matFab>
+          <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <div class="button-group">
+          <button (click)="deleteStudent(element)" matFab>
+          <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+    </div>
     </td>
   </ng-container>
 
