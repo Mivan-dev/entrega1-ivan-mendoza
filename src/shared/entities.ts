@@ -15,3 +15,8 @@ export interface Course {
     description: string;
     duration: string;
 }
+
+export interface LoggedUser {
+    username: string;
+    role: string;
+}
