@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Student } from '../../../shared/entities';
 import { AlumnosAPI } from './alumnos-api';
 import { CommonModule, JsonPipe } from '@angular/common';
-import { StudentTable } from "../../student-table/student-table";
+import { StudentTable } from "./student-table/student-table";
 import { switchMap } from 'rxjs/operators';
 
 @Component({
