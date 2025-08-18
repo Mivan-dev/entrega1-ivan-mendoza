@@ -29,7 +29,6 @@ export class App implements OnInit {
 
   addStudent(student: Student) {
     // No hacer esto con objetos anidados.
-    console.log('Nuevo estudiante agregado:', student);
     this.students = [...this.students, student];
     // Aquí podrías hacer una llamada a la API para guardar el nuevo estudiante.
   }
