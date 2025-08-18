@@ -2,6 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Boldtitle } from '../../shared/directives/boldtitle';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
+import { RoutesPaths } from '../../shared/routes';
+
 
 @Component({
   selector: 'app-navbar',
@@ -11,6 +13,8 @@ import { RouterModule } from '@angular/router';
 })
 export class Navbar {
   @Output() activeSection = new EventEmitter<string>();
+
+  routesPaths = RoutesPaths;
 
   navigate(section: string) {
     this.activeSection.emit(section);
