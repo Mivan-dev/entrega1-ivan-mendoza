@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { Auth } from '../../core/auth/auth';
 import { LoggedUser } from '../../../shared/entities';
 import { CommonModule, JsonPipe } from '@angular/common';
+import { RoutesPaths } from '../../../shared/routes';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class Login {
 
   constructor(
   private fb : FormBuilder,
-  private auth: Auth
+  private auth: Auth,
+  private router: Router
 ) {
     this.loginForm = this.fb.group({
       username: ['', [
@@ -88,6 +90,7 @@ export class Login {
       const {username, password} = this.loginForm.value;
       if(this.auth.logIn(username, password)) {
         console.log('Login exitoso');
+        this.router.navigate([RoutesPaths.ALUMNOS]);
       }
       else {
         console.log('Login fallido');
