@@ -23,7 +23,7 @@ export class AlumnosAPI {
   }
 
   deleteAlumno(student: Student): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${student.dni}`);
+    return this.http.delete<void>(`${this.baseUrl}/${student.id}`);
   }
 
   updateAlumno(student: Student): Observable<Student> {
