@@ -3,11 +3,12 @@ import { Alumnos } from './feature/alumnos/alumnos';
 import { Cursos } from './feature/cursos/cursos';
 import { Inscripciones } from './feature/inscripciones/inscripciones';
 import { RoutesPaths } from '../shared/routes';
+import { Login } from './feature/login/login';
 
 export const routes: Routes = [
     {
-        path: '',
-        component: Alumnos
+        path: RoutesPaths.LOGIN,
+        component: Login
     },
     {
         path: RoutesPaths.ALUMNOS,
