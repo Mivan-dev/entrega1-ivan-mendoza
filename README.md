@@ -1,33 +1,137 @@
-# Entregable1
+# Student Management System - Entregable 1
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
+Sistema de gestión de estudiantes desarrollado con Angular 20, que permite administrar estudiantes, cursos e inscripciones* con diferentes niveles de acceso según el rol del usuario.
 
-## Project Scope
+## 🚀 Características
 
-You can view a list of students and courses, with the ability to **view**, **edit** and **delete**. The application includes a toolbar for the title and a navbar to navigate between the different actions.
+- **Gestión de Estudiantes**: Ver, agregar y eliminar estudiantes
+- **Gestión de Cursos**: Administrar cursos disponibles  
+- **Sistema de Inscripciones**: Gestionar inscripciones de estudiantes a cursos (en desarrollo)
+- **Autenticación y Autorización**: Login con roles de usuario y administrador
+- **Validación de Formularios**: Validación reactiva con mensajes de error detallados
+- **Guards de Seguridad**: Protección de rutas según autenticación y rol
+- **Componentes Reutilizables**: Directivas, pipes y guards personalizados
 
-## Init
+## 🛠️ Tecnologías Utilizadas
 
+- **Frontend**: Angular 20
+- **Estilos**: Bootstrap 5, SCSS, Angular Material
+- **Formularios**: Angular Reactive Forms
+- **Testing**: Jasmine + Karma
+- **Base de Datos**: MockApi
+
+## 📋 Prerequisitos
+
+- Node.js (versión 18 o superior)
+- npm o yarn
+- Angular CLI
+
+## 🔧 Instalación
+
+1. **Clonar el repositorio**
 ```bash
-npm i
+git clone <https://github.com/Mivan-dev/entrega1-ivan-mendoza.git>
+cd entregable-1
 ```
 
-## Start Database
-
-To start a local DB, run:
-
+2. **Instalar dependencias**
 ```bash
-json-server --watch db.json
+npm install
 ```
 
-## Development server
-
-To start a local development server, run:
-
+3. **Iniciar el servidor de desarrollo**
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. **Abrir en el navegador**
+```
+http://localhost:4200
+```
+
+## 👤 Usuarios de Prueba
+
+| Usuario | Contraseña | Rol |
+|---------|------------|-----|
+| admin   | admin123   | Administrador |
+| user    | user123    | Usuario |
+
+## 🏗️ Estructura del Proyecto
+
+```
+src/
+├── app/
+│   ├── core/                    # Servicios principales
+│   │   └── auth/               # Servicio de autenticación
+│   ├── feature/                # Módulos de funcionalidad
+│   │   ├── alumnos/           # Gestión de estudiantes
+│   │   ├── cursos/            # Gestión de cursos
+│   │   ├── inscripciones/     # Gestión de inscripciones
+│   │   └── login/             # Autenticación
+│   └── layout/                # Componentes de layout
+│       ├── toolbar/           # Barra superior
+│       ├── navbar/            # Navegación lateral
+│       └── footer/            # Pie de página
+├── shared/                    # Elementos compartidos
+│   ├── directives/           # Directivas personalizadas
+│   ├── pipes/               # Pipes personalizados
+│   ├── guards/              # Guards de ruta
+│   ├── entities.ts          # Interfaces y tipos
+│   └── routes.ts            # Enums de rutas
+└── db.json                  # Base de datos local (deprecated)
+```
+
+## 🔐 Funcionalidades por Rol
+
+### Usuario Regular
+- ✅ Ver lista de estudiantes
+- ✅ Ver lista de cursos
+- ✅ Ver inscripciones
+- ❌ Editar estudiantes
+- ❌ Eliminar estudiantes
+
+### Administrador
+- ✅ Todas las funcionalidades de usuario
+- ✅ Agregar estudiantes
+- ✅ Editar estudiantes
+- ✅ Eliminar estudiantes
+- ✅ Gestión completa de cursos
+
+## 🧪 Testing
+
+**Ejecutar todos los tests**
+```bash
+ng test
+```
+
+**Tests incluidos:**
+- Servicio de autenticación (Auth)
+- Pipes personalizados (FullName)
+
+## 🔄 Flujo de la Aplicación
+
+1. **Login**: Usuario ingresa credenciales
+2. **Validación**: Sistema verifica usuario y rol
+3. **Dashboard**: Redirección según rol del usuario
+4. **Navegación**: Acceso a funcionalidades según permisos
+5. **CRUD Operations**: Operaciones según nivel de acceso
+
+## 🛡️ Validaciones Implementadas
+
+### Formulario de Login
+- Usuario: 4-12 caracteres, solo letras, números y ._-
+- Contraseña: 6-12 caracteres
+
+### Formulario de Estudiantes
+- Nombre: Solo letras, mínimo 2 caracteres
+- Apellido: Solo letras, mínimo 2 caracteres  
+- DNI: Solo números, hasta 8 dígitos
+- Edad: Solo números, mayor a 0
+- Promedio: Números decimales entre 0 y 10
+
+## 👨‍💻 Autor
+
+**Iván M**  
+Proyecto desarrollado para CoderHouse
 
 
