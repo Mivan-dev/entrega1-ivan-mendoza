@@ -5,4 +5,17 @@ describe('FullnamePipe', () => {
     const pipe = new FullnamePipe();
     expect(pipe).toBeTruthy();
   });
+
+  fit('should return full name', () => {
+    // Setup
+    const pipe = new FullnamePipe();
+    const name = 'John';
+    const surname = 'Doe';
+
+    //Act
+    const fullName = pipe.transform(name, surname);
+
+    // Assert
+    expect(fullName).toBe('John Doe');
+  });
 });
