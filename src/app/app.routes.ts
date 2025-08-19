@@ -4,42 +4,56 @@ import { Cursos } from './feature/cursos/cursos';
 import { Inscripciones } from './feature/inscripciones/inscripciones';
 import { RoutesPaths } from '../shared/routes';
 import { Login } from './feature/login/login';
+import { credentialsGuard, isAdminGuard } from '../shared/guards/credentials-guard';
 
 export const routes: Routes = [
+    {
+        path: '',
+        redirectTo: RoutesPaths.LOGIN,
+        pathMatch: 'full'
+    },
     {
         path: RoutesPaths.LOGIN,
         component: Login
     },
     {
         path: RoutesPaths.ALUMNOS,
-        component: Alumnos
+        component: Alumnos,
+        canActivate: [credentialsGuard]
     },
     {
         path: RoutesPaths.VER_ALUMNO,
-        loadComponent: () => import('./feature/alumnos/ver-alumno/ver-alumno').then(m => m.VerAlumno)
+        loadComponent: () => import('./feature/alumnos/ver-alumno/ver-alumno').then(m => m.VerAlumno),
+        canActivate: [credentialsGuard]
     },
     {
         path: RoutesPaths.EDITAR_ALUMNO + '/:id',
-        loadComponent: () => import('./feature/alumnos/editar-alumno/editar-alumno').then(m => m.EditarAlumno)
+        loadComponent: () => import('./feature/alumnos/editar-alumno/editar-alumno').then(m => m.EditarAlumno),
+        canActivate: [credentialsGuard, isAdminGuard] 
     },
     {
         path: RoutesPaths.CURSOS,
-        loadComponent: () => import('./feature/cursos/cursos').then(m => m.Cursos)
+        loadComponent: () => import('./feature/cursos/cursos').then(m => m.Cursos),
+        canActivate: [credentialsGuard]
     },
     {
         path: RoutesPaths.VER_CURSO,
-        loadComponent: () => import('./feature/cursos/ver-curso/ver-curso').then(m => m.VerCurso)
+        loadComponent: () => import('./feature/cursos/ver-curso/ver-curso').then(m => m.VerCurso),
+        canActivate: [credentialsGuard]
     },
     {
         path: RoutesPaths.EDITAR_CURSO + '/:id',
-        loadComponent: () => import('./feature/cursos/editar-curso/editar-curso').then(m => m.EditarCurso)
+        loadComponent: () => import('./feature/cursos/editar-curso/editar-curso').then(m => m.EditarCurso),
+        canActivate: [credentialsGuard, isAdminGuard]
     },
     {
         path: RoutesPaths.INSCRIPCIONES,
-        loadComponent: () => import('./feature/inscripciones/inscripciones').then(m => m.Inscripciones)
+        loadComponent: () => import('./feature/inscripciones/inscripciones').then(m => m.Inscripciones),
+        canActivate: [credentialsGuard]
     },
     {
         path: '**',
-        component: Alumnos
+        //TODO: hacer vista de not found
+        component: Login
     }
 ];
