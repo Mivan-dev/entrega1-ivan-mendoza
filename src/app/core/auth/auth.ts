@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoggedUser } from '../../../shared/entities';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,17 @@ export class Auth {
     {username: 'user', password: 'user123', role: 'user'}
   ];
 
-loggedUser : LoggedUser | null = null;
+// tiene que ser un subject para notificar cuando cambia
+private loggedUserSubject = new BehaviorSubject<LoggedUser | null>(null);
+loggedUser$ = this.loggedUserSubject.asObservable();
+
+constructor() {}
 
 logIn(username: string, password: string): boolean {
   // Lógica de autenticación
   const user = this.usersData.find(u => u.username === username && u.password === password);
   if(user) {
-    this.loggedUser = {username: user.username, role: user.role};
+    this.loggedUserSubject.next({username: user.username, role: user.role});
     return true;
   }
   return false;
@@ -28,7 +33,7 @@ logIn(username: string, password: string): boolean {
 isAdmin(): boolean {
   // Lógica para determinar si el usuario es admin
   const user = this.usersData.find(u => u.username === 'admin');
-  return user !== undefined; // Cambiar esto según la lógica de tu aplicación
+  return user !== undefined;
 }
 
 }
