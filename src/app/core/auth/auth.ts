@@ -29,6 +29,11 @@ logIn(username: string, password: string): boolean {
   return false;
 }
 
+// Se agrega para unit Test
+  getCurrentUser(): LoggedUser | null {
+    return this.loggedUserSubject.value;
+  }
+
 //chequear si es admin
 isAdmin(): boolean {
   // Lógica para determinar si el usuario es admin
