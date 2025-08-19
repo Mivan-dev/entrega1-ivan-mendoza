@@ -1,26 +1,85 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { Auth } from '../../core/auth/auth';
+import { LoggedUser } from '../../../shared/entities';
+import { CommonModule, JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterOutlet, ReactiveFormsModule],
+  imports: [RouterOutlet, ReactiveFormsModule, JsonPipe, CommonModule],
   templateUrl: './login.html',
   styleUrl: './login.scss'
 })
 export class Login {
 
   loginForm! : FormGroup;
+  user: LoggedUser | null = null;
 
   constructor(
   private fb : FormBuilder,
   private auth: Auth
 ) {
-    this.loginForm = fb.group({
-      username: [''],
-      password: ['']
+    this.loginForm = this.fb.group({
+      username: ['', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(12),
+        Validators.pattern('^[a-zA-Z0-9._-]+$') // solo letras, números, puntos, guiones
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(12)
+      ]]
     });
+  }
+
+  ngOnInit() {
+    this.auth.loggedUser$.subscribe(user => {
+      this.user = user;
+      if (user) {
+        console.log('Usuario logueado:', user);
+      } else {
+        console.log('Usuario no logueado');
+      }
+    });
+  }
+
+  // Métodos para manejar errores de forma limpia
+  hasError(field: string, errorType: string): boolean {
+    return this.loginForm.get(field)?.hasError(errorType) && 
+           this.loginForm.get(field)?.touched || false;
+  }
+
+  isFieldInvalid(field: string): boolean {
+    return this.loginForm.get(field)?.invalid && 
+           this.loginForm.get(field)?.touched || false;
+  }
+
+  getErrorMessage(field: string): string {
+    const control = this.loginForm.get(field);
+    
+    // EL BOTON PERMANECERA DISABLE
+    // if (control?.hasError('required')) {
+    //   return field === 'username' ? 'El usuario es requerido' : 'La contraseña es requerida';
+    // }
+    
+    if (control?.hasError('minlength')) {
+      const requiredLength = control.errors?.['minlength'].requiredLength;
+      return `Mínimo ${requiredLength} caracteres`;
+    }
+    
+    if (control?.hasError('maxlength')) {
+      const requiredLength = control.errors?.['maxlength'].requiredLength;
+      return `Máximo ${requiredLength} caracteres`;
+    }
+    
+    if (control?.hasError('pattern')) {
+      return 'Solo se permiten letras, números y los caracteres ._-';
+    }
+    
+    return '';
   }
 
   onSubmit() {
