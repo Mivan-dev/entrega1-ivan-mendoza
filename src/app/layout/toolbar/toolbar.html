@@ -1,3 +1,10 @@
 <!-- Título de la aplicación -->
-
-<h1 appBoldtitle class="toolbar">TITULO DE LA APLICACION</h1>
+<div class="toolbar">
+  <h6 appBoldtitle class="toolbar">Sistema de Manejo de Estudiantes</h6>
+  
+  <div *ngIf="isLoggedIn$ | async" class="user-info">
+    <span>Bienvenido, {{ (user$ | async)?.username }}</span>
+    <span *ngIf="(user$ | async)?.role === 'admin'" class="admin-badge">[ADMIN]</span>
+    <button class="btn btn-sm btn-outline-light ms-2" (click)="onLogout()">Logout</button>
+  </div>
+</div>
