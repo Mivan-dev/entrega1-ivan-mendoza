@@ -17,6 +17,17 @@ export interface Course {
 }
 
 export interface LoggedUser {
-    username: string;
-    role: string;
+  username: string;
+  role: 'admin' | 'user';
 }
+
+export interface User {
+  username: string;
+  password: string;
+  role: 'admin' | 'user';
+}
+
+export const USERS_DATA: User[] = [
+  { username: 'admin', password: 'admin123', role: 'admin' },
+  { username: 'user', password: 'user123', role: 'user' }
+];
