@@ -1,10 +1,16 @@
-<!-- Título de la aplicación -->
+<!-- Toolbar usando Async pipe -->
 <div class="toolbar">
   <h6 appBoldtitle class="toolbar">Sistema de Manejo de Estudiantes</h6>
-  
-  <div *ngIf="isLoggedIn$ | async" class="user-info">
+
+  <div
+    class="user-info"
+    [style.display]="(isLoggedIn$ | async) ? 'flex' : 'none'">
     <span>Bienvenido, {{ (user$ | async)?.username }}</span>
-    <span *ngIf="(user$ | async)?.role === 'admin'" class="admin-badge">[ADMIN]</span>
+    <span
+      class="admin-badge"
+      [style.display]="((user$ | async)?.role === 'admin') ? 'inline-block' : 'none'">
+      [ADMIN]
+    </span>
     <button class="btn btn-sm btn-outline-light ms-2" (click)="onLogout()">Logout</button>
   </div>
 </div>
