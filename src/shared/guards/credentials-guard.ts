@@ -1,17 +1,19 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { Auth } from '../../app/core/auth/auth';
-import { map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { map, take } from 'rxjs/operators';
 import { RoutesPaths } from '../routes';
+import { selectIsLoggedIn, selectIsAdmin } from '../../app/ngrx/auth/auth.selectors';
 
 export const credentialsGuard: CanActivateFn = (route, state) => {
-  const auth = inject(Auth);
+  const store = inject(Store);
   const router = inject(Router);
 
-  return auth.loggedUser$.pipe(
-    map(user => {
-      if (!user) {
-        router.navigate(['/login']);
+   return store.select(selectIsLoggedIn).pipe(
+    take(1),
+    map(isLoggedIn => {
+      if (!isLoggedIn) {
+        router.navigate([RoutesPaths.LOGIN]);
         return false;
       }
       return true;
@@ -20,23 +22,16 @@ export const credentialsGuard: CanActivateFn = (route, state) => {
 };
 
 export const isAdminGuard: CanActivateFn = (route, state) => {
-  const auth = inject(Auth);
+  const store = inject(Store);
   const router = inject(Router);
 
-  return auth.loggedUser$.pipe(
-    map(user => {
-      if (!user) {
-        router.navigate([RoutesPaths.LOGIN]);
-        return false;
-      }
-      
-      if (user.role !== 'admin') {
+  return store.select(selectIsAdmin).pipe(
+    take(1),
+    map(isAdmin => {
+      if (!isAdmin) {
         router.navigate([RoutesPaths.ALUMNOS]);
-        // TODO: hacer vista de no autorizado, toast o simplemente el boton disable
-        console.error('Acceso denegado - Se requiere rol de administrador');
         return false;
       }
-      
       return true;
     })
   );
