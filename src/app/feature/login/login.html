@@ -4,24 +4,14 @@
   <div class="form-group">
     <label for="username">Usuario:</label>
     <input id="username" formControlName="username" placeholder="Ingrese su usuario">
-    
-    <!-- TODO: No usar logica en html -->
-    <div *ngIf="isFieldInvalid('username')" class="error">
-      {{ getErrorMessage('username') }}
-    </div>
+    <div class="error">{{ usernameError }}</div>
   </div>
 
   <div class="form-group">
     <label for="password">Contraseña:</label>
     <input id="password" type="password" formControlName="password" placeholder="Ingrese su contraseña">
-    
-    <!-- TODO: No usar logica en html -->
-    <div *ngIf="isFieldInvalid('password')" class="error">
-      {{ getErrorMessage('password') }}
-    </div>
+    <div class="error">{{ passwordError }}</div>
   </div>
 
   <button type="submit" [disabled]="!loginForm.valid">Iniciar Sesión</button>
-
-  {{this.user | json}}
 </form>

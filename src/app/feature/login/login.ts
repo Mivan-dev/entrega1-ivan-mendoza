@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
-//import { Auth } from '../../core/auth/auth';
 import { LoggedUser, USERS_DATA } from '../../../shared/entities';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { RoutesPaths } from '../../../shared/routes';
@@ -20,9 +19,12 @@ export class Login {
   loginForm! : FormGroup;
   user: LoggedUser | null = null;
 
+  // variables de error
+  usernameError: string = '';
+  passwordError: string = '';
+
   constructor(
   private fb : FormBuilder,
-  //private auth: Auth,
   private router: Router,
   private store: Store<{ auth: AuthState }>
 ) {
@@ -39,60 +41,34 @@ export class Login {
         Validators.maxLength(12)
       ]]
     });
+
+    this.loginForm.valueChanges.subscribe(() => {
+      this.updateErrors();
+    });
+
   }
 
-  // ngOnInit() {
-  //   this.auth.loggedUser$.subscribe(user => {
-  //     this.user = user;
-  //     if (user) {
-  //       console.log('Usuario logueado:', user);
-  //     } else {
-  //       console.log('Usuario no logueado');
-  //     }
-  //   });
-  // }
+  // Manejo de Errores en form
+  private updateErrors(): void {
+    const usernameCtrl = this.loginForm.get('username');
+    const passwordCtrl = this.loginForm.get('password');
 
-  // Métodos para manejar errores de forma limpia
-  hasError(field: string, errorType: string): boolean {
-    return this.loginForm.get(field)?.hasError(errorType) && 
-           this.loginForm.get(field)?.touched || false;
+    this.usernameError = this.getControlError(usernameCtrl);
+    this.passwordError = this.getControlError(passwordCtrl);
   }
 
-  isFieldInvalid(field: string): boolean {
-    return this.loginForm.get(field)?.invalid && 
-           this.loginForm.get(field)?.touched || false;
+private getControlError(control: AbstractControl | null): string {
+  if (!control) return '';
+  if (control.invalid && (control.dirty || control.touched)) {
+    if (control.hasError('required')) return 'Este campo es obligatorio';
+    if (control.hasError('minlength')) return `Debe tener al menos ${control.getError('minlength').requiredLength} caracteres`;
+    if (control.hasError('maxlength')) return `Debe tener como máximo ${control.getError('maxlength').requiredLength} caracteres`;
+    if (control.hasError('pattern')) return 'Formato inválido (solo letras, números, ., _ y -)';
   }
-
-  getErrorMessage(field: string): string {
-    const control = this.loginForm.get(field);
-    
-    // EL BOTON PERMANECERA DISABLE
-    // if (control?.hasError('required')) {
-    //   return field === 'username' ? 'El usuario es requerido' : 'La contraseña es requerida';
-    // }
-    
-    if (control?.hasError('minlength')) {
-      const requiredLength = control.errors?.['minlength'].requiredLength;
-      return `Mínimo ${requiredLength} caracteres`;
-    }
-    
-    if (control?.hasError('maxlength')) {
-      const requiredLength = control.errors?.['maxlength'].requiredLength;
-      return `Máximo ${requiredLength} caracteres`;
-    }
-    
-    if (control?.hasError('pattern')) {
-      return 'Solo se permiten letras, números y los caracteres ._-';
-    }
-    
-    return '';
-  }
+  return '';
+}
 
   onSubmit() {
-    // Lógica para manejar el envío del formulario
-    // const {username, password} = this.loginForm.value;
-    // console.log(this.loginForm.value);
-    // this.store.dispatch(login({ username, password }));
 
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
@@ -103,30 +79,11 @@ export class Login {
       if (user) {
         // Dispatch login action
         this.store.dispatch(login({ username, password }));
-        
-        console.log(`Login exitoso - Usuario: ${user.username} - Es admin: ${user.role === 'admin'}`);
-        
         // Navegar a Alumnos
         this.router.navigate([RoutesPaths.ALUMNOS]);
       } else {
-        console.log('Credenciales incorrectas');
         alert('Usuario o contraseña incorrectos');
       }
     }
   }
-
-
-
-
-  //   if(this.loginForm.valid) {
-  //     const {username, password} = this.loginForm.value;
-  //     if(this.auth.logIn(username, password)) {
-  //       console.log('Login exitoso');
-  //       this.router.navigate([RoutesPaths.ALUMNOS]);
-  //     }
-  //     else {
-  //       console.log('Login fallido');
-  //     }
-  // } 
-// }
 }
