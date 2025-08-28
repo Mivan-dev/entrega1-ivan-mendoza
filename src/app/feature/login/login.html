@@ -5,6 +5,7 @@
     <label for="username">Usuario:</label>
     <input id="username" formControlName="username" placeholder="Ingrese su usuario">
     
+    <!-- TODO: No usar logica en html -->
     <div *ngIf="isFieldInvalid('username')" class="error">
       {{ getErrorMessage('username') }}
     </div>
@@ -14,6 +15,7 @@
     <label for="password">Contraseña:</label>
     <input id="password" type="password" formControlName="password" placeholder="Ingrese su contraseña">
     
+    <!-- TODO: No usar logica en html -->
     <div *ngIf="isFieldInvalid('password')" class="error">
       {{ getErrorMessage('password') }}
     </div>

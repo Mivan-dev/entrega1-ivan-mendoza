@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
-import { Auth } from '../../core/auth/auth';
-import { LoggedUser } from '../../../shared/entities';
+//import { Auth } from '../../core/auth/auth';
+import { LoggedUser, USERS_DATA } from '../../../shared/entities';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { RoutesPaths } from '../../../shared/routes';
+import { Store } from '@ngrx/store';
+import { AuthState } from '../../ngrx/auth/auth.model';
+import { login } from '../../ngrx/auth/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -19,8 +22,9 @@ export class Login {
 
   constructor(
   private fb : FormBuilder,
-  private auth: Auth,
-  private router: Router
+  //private auth: Auth,
+  private router: Router,
+  private store: Store<{ auth: AuthState }>
 ) {
     this.loginForm = this.fb.group({
       username: ['', [
@@ -37,16 +41,16 @@ export class Login {
     });
   }
 
-  ngOnInit() {
-    this.auth.loggedUser$.subscribe(user => {
-      this.user = user;
-      if (user) {
-        console.log('Usuario logueado:', user);
-      } else {
-        console.log('Usuario no logueado');
-      }
-    });
-  }
+  // ngOnInit() {
+  //   this.auth.loggedUser$.subscribe(user => {
+  //     this.user = user;
+  //     if (user) {
+  //       console.log('Usuario logueado:', user);
+  //     } else {
+  //       console.log('Usuario no logueado');
+  //     }
+  //   });
+  // }
 
   // Métodos para manejar errores de forma limpia
   hasError(field: string, errorType: string): boolean {
@@ -86,15 +90,43 @@ export class Login {
 
   onSubmit() {
     // Lógica para manejar el envío del formulario
-    if(this.loginForm.valid) {
-      const {username, password} = this.loginForm.value;
-      if(this.auth.logIn(username, password)) {
-        console.log('Login exitoso');
+    // const {username, password} = this.loginForm.value;
+    // console.log(this.loginForm.value);
+    // this.store.dispatch(login({ username, password }));
+
+    if (this.loginForm.valid) {
+      const { username, password } = this.loginForm.value;
+      
+      // Validar credenciales
+      const user = USERS_DATA.find(u => u.username === username && u.password === password);
+      
+      if (user) {
+        // Dispatch login action
+        this.store.dispatch(login({ username, password }));
+        
+        console.log(`Login exitoso - Usuario: ${user.username} - Es admin: ${user.role === 'admin'}`);
+        
+        // Navegar a Alumnos
         this.router.navigate([RoutesPaths.ALUMNOS]);
+      } else {
+        console.log('Credenciales incorrectas');
+        alert('Usuario o contraseña incorrectos');
       }
-      else {
-        console.log('Login fallido');
-      }
-  } 
-}
+    }
+  }
+
+
+
+
+  //   if(this.loginForm.valid) {
+  //     const {username, password} = this.loginForm.value;
+  //     if(this.auth.logIn(username, password)) {
+  //       console.log('Login exitoso');
+  //       this.router.navigate([RoutesPaths.ALUMNOS]);
+  //     }
+  //     else {
+  //       console.log('Login fallido');
+  //     }
+  // } 
+// }
 }
