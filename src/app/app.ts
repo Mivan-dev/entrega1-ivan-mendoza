@@ -7,6 +7,9 @@ import { HttpClient } from '@angular/common/http';
 import { Student } from '../shared/entities';
 import { StudentTable } from "./feature/alumnos/student-table/student-table";
 import { Footer } from "./layout/footer/footer";
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectIsLoggedIn } from './ngrx/auth/auth.selectors';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +19,11 @@ import { Footer } from "./layout/footer/footer";
 })
 export class App implements OnInit {
   
-  students: Student[] = [];
-  activeSection = "students";
-  constructor(private http: HttpClient) {}
+  isLoggedIn$: Observable<boolean>;
 
-  ngOnInit(): void {
-    this.http.get<Student[]>('mocks/students.json').subscribe(data => {
-      this.students = data;
-    });
+  constructor(private store: Store) {
+    this.isLoggedIn$ = this.store.select(selectIsLoggedIn);
   }
+
+  ngOnInit(): void {}
 }
