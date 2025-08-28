@@ -5,6 +5,7 @@ import { Inscripciones } from './feature/inscripciones/inscripciones';
 import { RoutesPaths } from '../shared/routes';
 import { Login } from './feature/login/login';
 import { credentialsGuard, isAdminGuard } from '../shared/guards/credentials-guard';
+import { NotFoundPath } from './feature/not-found-path/not-found-path';
 
 export const routes: Routes = [
     {
@@ -18,7 +19,7 @@ export const routes: Routes = [
     },
     {
         path: RoutesPaths.ALUMNOS,
-        component: Alumnos,
+        loadComponent: () => import('./feature/alumnos/alumnos').then(m => m.Alumnos),
         canActivate: [credentialsGuard]
     },
     {
@@ -51,9 +52,12 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/inscripciones/inscripciones').then(m => m.Inscripciones),
         canActivate: [credentialsGuard]
     },
+     {
+        path: RoutesPaths.NOT_FOUND_PATH,
+        component: NotFoundPath
+    },
     {
         path: '**',
-        //TODO: hacer vista de not found
-        component: Login
+        component: NotFoundPath
     }
 ];

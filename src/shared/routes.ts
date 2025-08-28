@@ -7,4 +7,6 @@ export enum RoutesPaths{
     EDITAR_ALUMNO = 'editar-alumno',
     VER_CURSO = 'ver-curso',
     EDITAR_CURSO = 'editar-curso',
+    NOT_FOUND_PATH = '404'
+
 }
