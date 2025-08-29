@@ -1,15 +1,23 @@
 <!-- Barra de Navegación-->
-<div [style.display]="navbarDisplay$ | async">
-  <h2 appBoldtitle>Acciones</h2>
-  <ul class="nav flex-column">
-    <li>
-      <button [routerLink]="[routesPaths.ALUMNOS]" class="btn btn-dark my-1">Alumnos</button>
+<nav class="navbar flex-column p-3" [style.display]="navbarDisplay$ | async">
+  <h2 appBoldtitle class="mb-4 border-bottom pb-2">Acciones</h2>
+
+  <ul class="nav flex-column w-100">
+    <li class="nav-item my-1">
+      <button [routerLink]="[routesPaths.ALUMNOS]" class="btn btn-warning w-100">
+        Alumnos
+      </button>
     </li>
-    <li>
-      <button [routerLink]="[routesPaths.CURSOS]" class="btn btn-warning">Cursos</button>
+    <li class="nav-item my-1">
+      <button [routerLink]="[routesPaths.CURSOS]" class="btn btn-warning w-100">
+        Cursos
+      </button>
     </li>
-    <li>
-      <button [routerLink]="[routesPaths.INSCRIPCIONES]" class="btn btn-primary my-1">Inscripciones</button>
+    <li class="nav-item my-1">
+      <button [routerLink]="[routesPaths.INSCRIPCIONES]" class="btn btn-dark w-100">
+        Inscripciones
+      </button>
     </li>
   </ul>
-</div>
+</nav>
+
