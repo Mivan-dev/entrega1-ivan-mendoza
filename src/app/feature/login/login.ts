@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoggedUser, USERS_DATA } from '../../../shared/entities';
 import { CommonModule } from '@angular/common';
 import { RoutesPaths } from '../../../shared/routes';
@@ -10,7 +10,7 @@ import { login } from '../../ngrx/auth/auth.actions';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterOutlet, ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.html',
   styleUrl: './login.scss'
 })

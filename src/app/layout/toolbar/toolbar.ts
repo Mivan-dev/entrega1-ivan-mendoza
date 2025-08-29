@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Boldtitle } from '../../../shared/directives/boldtitle';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs/internal/Observable';
 import { LoggedUser } from '../../../shared/entities';
@@ -12,7 +11,7 @@ import { map } from 'rxjs';
 
 @Component({
   selector: 'app-toolbar',
-  imports: [Boldtitle, CommonModule],
+  imports: [CommonModule],
   templateUrl: './toolbar.html',
   styleUrl: './toolbar.scss'
 })
