@@ -1,7 +1,8 @@
 import { createReducer, on } from "@ngrx/store";
-import { AuthState, initialAuthState } from "./auth.model";
+import { initialAuthState, LOGGED_OUT_AUTH_STATE } from "./auth.model";
 import { login, logout } from './auth.actions';
 import { USERS_DATA } from "../../../shared/entities";
+
 
 
 
@@ -16,5 +17,5 @@ export const authReducer = createReducer(
       isLoggedIn: !!user
     };
   }),
-  on(logout, () => initialAuthState)
+  on(logout, () => LOGGED_OUT_AUTH_STATE)
 );
