@@ -1,15 +1,17 @@
-<h4>Curso:</h4>
+<div class="flex-grow-1 p-4">
 
-<div class="detail" *ngIf="course">
-  <div class="detail-content">
-    <h2>{{ course?.name }}</h2>
-    <br>
-    <p><strong>Descripción:</strong> {{ course?.description }}</p>
-    <p><strong>Duración:</strong> {{ course?.duration }}</p>
+  <h2 class="mb-3">Curso:</h2>
+
+  <div class="card p-3 shadow">
+
+    <h2 class="mb-3">{{ courseName }}</h2>
+
+    <p><strong>Descripción:</strong> {{ courseDescription }}</p>
+    <p><strong>Duración:</strong> {{ courseDuration }}</p>
+
+    <p class="text-danger">{{ courseNotFound }}</p>
+
   </div>
+
 </div>
 
-<!-- If student is not defined, show a message -->
-<div class="detail" *ngIf="!course">
-  <p>No se encontró información del Curso.</p>
-</div>
