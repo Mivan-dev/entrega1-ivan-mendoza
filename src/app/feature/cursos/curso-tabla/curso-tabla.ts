@@ -7,12 +7,11 @@ import { Observable } from 'rxjs';
 import { selectIsAdmin } from '../../../ngrx/auth/auth.selectors';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { FullnamePipe } from '../../../../shared/pipes/fullname-pipe';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-curso-tabla',
-  imports: [MatTableModule, RouterModule, MatButtonModule, MatIconModule, FullnamePipe, CommonModule],
+  imports: [MatTableModule, RouterModule, MatButtonModule, MatIconModule, CommonModule],
   templateUrl: './curso-tabla.html',
   styleUrl: './curso-tabla.scss'
 })
