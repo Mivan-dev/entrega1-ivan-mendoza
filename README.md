@@ -22,8 +22,7 @@ Sistema de gestión de estudiantes desarrollado con Angular 20, que permite admi
 
 ## 📋 Prerequisitos
 
-- Node.js (versión 18 o superior)
-- npm o yarn
+- Node 18+
 - Angular CLI
 
 ## 🔧 Instalación
@@ -62,16 +61,18 @@ http://localhost:4200
 src/
 ├── app/
 │   ├── core/                    # Servicios principales
-│   │   └── auth/               # Servicio de autenticación
+│   │   └── auth/               # Servicio de autenticación (deprecated)
 │   ├── feature/                # Módulos de funcionalidad
 │   │   ├── alumnos/           # Gestión de estudiantes
 │   │   ├── cursos/            # Gestión de cursos
 │   │   ├── inscripciones/     # Gestión de inscripciones
 │   │   └── login/             # Autenticación
 │   └── layout/                # Componentes de layout
-│       ├── toolbar/           # Barra superior
-│       ├── navbar/            # Navegación lateral
-│       └── footer/            # Pie de página
+│   │   ├── toolbar/           # Barra superior
+│   │   ├── navbar/            # Navegación lateral
+│   │   └── footer/            # Pie de página
+│   └─ ngrx/                   # Manejo de estados
+│       └─ auth/               # actions, reducer, selectors, model (persistencia)
 ├── shared/                    # Elementos compartidos
 │   ├── directives/           # Directivas personalizadas
 │   ├── pipes/               # Pipes personalizados
