@@ -1,11 +1,19 @@
-<div class="container">
+<div class="d-flex flex-column vh-100">
+
   <app-toolbar class="toolbar"></app-toolbar>
-  <app-navbar class="navbar"></app-navbar>
-  <div class="content">
-    
-    <router-outlet> </router-outlet>
-    
+
+  <div class="d-flex flex-grow-1">
+
+    <app-navbar class="navbar"></app-navbar>
+
+    <div class="flex-grow-1 p-4">
+
+      <router-outlet></router-outlet>
+      
+    </div>
+
   </div>
-  
+
   <app-footer class="footer"></app-footer>
+
 </div>
