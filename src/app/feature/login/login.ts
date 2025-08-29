@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
 import { LoggedUser, USERS_DATA } from '../../../shared/entities';
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RoutesPaths } from '../../../shared/routes';
 import { Store } from '@ngrx/store';
 import { AuthState } from '../../ngrx/auth/auth.model';
@@ -10,7 +10,7 @@ import { login } from '../../ngrx/auth/auth.actions';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterOutlet, ReactiveFormsModule, JsonPipe, CommonModule],
+  imports: [RouterOutlet, ReactiveFormsModule, CommonModule],
   templateUrl: './login.html',
   styleUrl: './login.scss'
 })
