@@ -1,16 +1,12 @@
 <!-- Toolbar usando Async pipe -->
-<div class="toolbar">
-  <h6 appBoldtitle class="toolbar">Sistema de Manejo de Estudiantes</h6>
+<nav class="navbar navbar-dark bg-primary px-3">
+  <span class="navbar-brand mb-0 h6">Student System</span>
 
-  <div
-    class="user-info"
-    [style.display]="(isLoggedIn$ | async) ? 'flex' : 'none'">
-    <span>Bienvenido, {{ (user$ | async)?.username }}</span>
-    <span
-      class="admin-badge"
-      [style.display]="((user$ | async)?.role === 'admin') ? 'inline-block' : 'none'">
-      [ADMIN]
+  <div class="d-flex align-items-center" [style.display]="userInfoDisplay$ | async">
+    <span class="text-light">{{ welcomeText$ | async }}</span>
+    <span class="badge bg-warning text-dark ms-2" [style.display]="adminBadgeDisplay$ | async">
+      ADMIN
     </span>
-    <button class="btn btn-sm btn-outline-light ms-2" (click)="onLogout()">Logout</button>
+    <button class="btn btn-sm btn-outline-light ms-3" (click)="onLogout()">Logout</button>
   </div>
-</div>
+</nav>
