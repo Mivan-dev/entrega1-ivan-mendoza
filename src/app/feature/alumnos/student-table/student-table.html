@@ -36,7 +36,9 @@
           <mat-icon>more</mat-icon>
           </button>
         </div>
-        <div class="button-group">
+         <!-- Verifica si es Admin para mostrar botones de edit y delete -->
+        <div class="action-buttons" [style.display]="(isAdmin$ | async) ? 'inline-flex' : 'none'">
+          <div class="button-group">
           <button (click)="editStudent(element)" matFab>
           <mat-icon>edit</mat-icon>
           </button>
@@ -45,6 +47,7 @@
           <button (click)="deleteStudent(element)" matFab>
           <mat-icon>delete</mat-icon>
           </button>
+        </div>
         </div>
     </div>
     </td>

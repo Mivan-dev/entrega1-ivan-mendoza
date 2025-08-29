@@ -5,10 +5,14 @@ import { FullnamePipe } from '../../../../shared/pipes/fullname-pipe';
 import { Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectIsAdmin } from '../../../ngrx/auth/auth.selectors';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-student-table',
-  imports: [MatTableModule, MatButtonModule, MatIconModule, FullnamePipe, RouterModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, FullnamePipe, RouterModule, CommonModule],
   templateUrl: './student-table.html',
   styleUrl: './student-table.scss'
 })
@@ -17,9 +21,15 @@ export class StudentTable {
   @Input() students: Student[] = [];
   @Output() deleteEvent = new EventEmitter<Student>();
 
+  isAdmin$: Observable<boolean>;
   displayedColumns: string[] = ['fullname', 'age', 'dni', 'average', 'actions'];
 
-  constructor (private router: Router) { }
+  constructor (
+    private router: Router,
+    private store: Store
+  ) { 
+    this.isAdmin$ = this.store.select(selectIsAdmin);
+  }
 
   viewDetails(student: Student) {
     this.router.navigate(['/ver-alumno'],{
