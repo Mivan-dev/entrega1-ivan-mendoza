@@ -1,21 +1,35 @@
 import { Component } from '@angular/core';
-import { Student } from '../../../../shared/entities';
 import { Router } from '@angular/router';
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { Student } from '../../../../shared/entities';
 
 @Component({
   selector: 'app-ver-alumno',
-  imports: [JsonPipe, CommonModule],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './ver-alumno.html',
   styleUrl: './ver-alumno.scss'
 })
 export class VerAlumno {
-  student: Student | undefined;
+  
+  studentFullname = '';
+  studentAge?: number;
+  studentDni?: number;
+  studentAverage?: number;
+  studentNotFound = '';
 
-  constructor(private router: Router){
+  constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
-    this.student = navigation?.extras.state?.['student'];
-    
-  }
+    const student = navigation?.extras?.state?.['student'] as Student | undefined;
 
+    if (student) {
+      this.studentFullname = `${student.name} ${student.surname}`;
+      this.studentAge = student.age;
+      this.studentDni = student.dni;
+      this.studentAverage = student.average;
+      this.studentNotFound = '';
+    } else {
+      this.studentNotFound = 'No se encontró información del alumno.';
+    }
+  }
 }
